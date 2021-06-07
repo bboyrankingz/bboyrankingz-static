@@ -1,0 +1,297 @@
+<div id="content" role="main" class="no-padding" ng-controller="Search">
+
+    <div class="page-top larger parallax" style="background-image: url('/site_media/static/img/redbull.jpg')"
+         data-0="background-position:50% 0px;" data-1000="background-position:50% -100%">
+        <div class="container text-center">
+            <h1 class=" text-white text-center title-underblock white">Stats
+                <small class="hidden-xs">all rankings</small>
+            </h1>
+            <p class="lead text-white">Here all the statistiques of bboyrankingz.</p>
+            <div class="row">
+                <div class="col-md-6 col-md-push-3">
+                    <a class="btn btn-white v2 btn-border radius-lger min-width" href="/#/about_ranking"> About
+                        Points</a>
+                </div><!-- End .col-md-6 -->
+            </div><!-- End .row -->
+        </div><!-- End .container -->
+    </div><!-- End .knowledge-header -->
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-6 col-sm-6">
+                <h2 class="title-underblock custom text-uppercase text-center mb20"k><span>Bboys Elo Ranking</span></h2>
+                <div class="table-responsive">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <select class="form-control input-sm" ng-change="stats.update_elo_time(stats.eloperiod)" ng-model="stats.eloperiod" ng-options="item.value as item.name for item in stats.years">
+                            </select>
+                        </div>
+                    </div>
+                    <table class="table table-striped table table-bordered table-hover table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th></th>
+                            <th>Score</th>
+                            <th>Games</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in stats.elo_bboys.results">
+                            <td>{{$index + ((stats.elo_pager -1) * 10) + 1}}</td>
+                            <td ng-if="item.title"><a href="{{ item.get_absolute_url }}">{{ item.title}}</a></td>
+                            <td class="f16">
+                                <span class="flag {{item.country | lowercase}}"/>
+                            </td>
+                            <td>{{item.score}}</td>
+                            <td>{{item.games}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <nav>
+                        <ul class="pager">
+                            <li ng-if="stats.elo_bboys.previous != null"><a ng-click="stats.previous_elo()">Previous</a>
+                            </li>
+                            <li ng-if="stats.elo_bboys.next != null"><a ng-click="stats.next_elo()">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="divider line"></div>
+            </div>
+
+            <div class="col-md-6 col-sm-6">
+                <h2 class="title-underblock custom text-uppercase text-center mb20"k><span>Bboys Max Elo Ranking</span></h2>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <select class="form-control input-sm" ng-change="stats.update_elo_time(stats.eloperiod)" ng-model="stats.eloperiod" ng-options="item.value as item.name for item in stats.years">
+                            </select>
+                        </div>
+                    </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table table-bordered table-hover table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th></th>
+                            <th>Score</th>
+                            <th>Games</th>
+                            <th>Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in stats.elo_max_bboys.results">
+                            <td>{{$index + ((stats.elo_pager -1) * 10) + 1}}</td>
+                            <td ng-if="item.title"><a href="{{ item.get_absolute_url }}">{{ item.title}}</a></td>
+                            <td class="f16">
+                                <span class="flag {{item.country | lowercase}}"/>
+                            </td>
+                            <td>{{item.max_score}}</td>
+                            <td>{{item.games}}</td>
+                            <td>{{item.date_max_score | date:'mediumDate'}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <nav>
+                        <ul class="pager">
+                            <li ng-if="stats.elo_max_bboys.previous != null"><a ng-click="stats.previous_elo()">Previous</a>
+                            </li>
+                            <li ng-if="stats.elo_max_bboys.next != null"><a ng-click="stats.next_elo()">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="divider line"></div>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-md-6 col-sm-6">
+                <h2 class="title-underblock custom text-uppercase text-center mb20"k><span>Crews Elo Ranking</span></h2>
+                <div class="table-responsive">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <select class="form-control input-sm" ng-change="stats.update_elo_time(stats.eloperiod)" ng-model="stats.eloperiod" ng-options="item.value as item.name for item in stats.years">
+                            </select>
+                        </div>
+                    </div>
+                    <table class="table table-striped table table-bordered table-hover table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th></th>
+                            <th>Score</th>
+                            <th>Games</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in stats.elo_crews.results">
+                            <td>{{$index + ((stats.elo_pager -1) * 10) + 1}}</td>
+                            <td ng-if="item.title"><a href="{{ item.get_absolute_url }}">{{ item.title}}</a></td>
+                            <td class="f16">
+                                <span class="flag {{item.country | lowercase}}"/>
+                            </td>
+                            <td>{{item.score}}</td>
+                            <td>{{item.games}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <nav>
+                        <ul class="pager">
+                            <li ng-if="stats.elo_crews.previous != null"><a ng-click="stats.previous_elo()">Previous</a>
+                            </li>
+                            <li ng-if="stats.elo_crews.next != null"><a ng-click="stats.next_elo()">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="divider line"></div>
+            </div>
+
+            <div class="col-md-6 col-sm-6">
+                <h2 class="title-underblock custom text-uppercase text-center mb20"k><span>Crews Max Elo Ranking</span></h2>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <select class="form-control input-sm" ng-change="stats.update_elo_time(stats.eloperiod)" ng-model="stats.eloperiod" ng-options="item.value as item.name for item in stats.years">
+                            </select>
+                        </div>
+                    </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table table-bordered table-hover table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th></th>
+                            <th>Score</th>
+                            <th>Games</th>
+                            <th>Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in stats.elo_max_crews.results">
+                            <td>{{$index + ((stats.elo_pager -1) * 10) + 1}}</td>
+                            <td ng-if="item.title"><a href="{{ item.get_absolute_url }}">{{ item.title}}</a></td>
+                            <td class="f16">
+                                <span class="flag {{item.country | lowercase}}"/>
+                            </td>
+                            <td>{{item.max_score}}</td>
+                            <td>{{item.games}}</td>
+                            <td>{{item.date_max_score | date:'mediumDate'}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <nav>
+                        <ul class="pager">
+                            <li ng-if="stats.elo_max_crews.previous != null"><a ng-click="stats.previous_elo()">Previous</a>
+                            </li>
+                            <li ng-if="stats.elo_max_crews.next != null"><a ng-click="stats.next_elo()">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="divider line"></div>
+            </div>
+
+        </div>
+
+        <div ng-repeat="(key,type) in stats.tables_country" class="col-md-12 col-sm-12">
+            <h2 class="title-underblock custom text-uppercase text-center mb20" ng-cloak><span>{{ key }}</span></h2>
+            <div class="row">
+                <div class="col-md-2">
+                    <select class="form-control input-sm" ng-change="stats.update_time(key, stats.theperiod)"
+                            ng-options="time.value as time.name for time in type.years" ng-model="stats.theperiod">
+                    </select>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped table table-bordered table-hover table-condensed">
+                    <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Points</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in type.results">
+                        <td>{{$index + ((stats.pagers[key] -1) * 10) + 1}}</td>
+                        <td ng-if="item.title"><a href="{{ item.get_absolute_url }}">{{ item.title}}</a></td>
+                        <td>
+                            {{item.country}}
+                        </td>
+                        <td>{{item.sum_points}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <nav>
+                    <ul class="pager">
+                        <li ng-if="stats.tables_country[key].previous != null"><a ng-click="stats.previous_page(key)">Previous</a>
+                        </li>
+                        <li ng-if="stats.tables_country[key].next != null"><a ng-click="stats.next_page(key)">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row">
+
+
+            <div ng-repeat="(key,type) in stats.tables_person" class="col-md-6 col-sm-6">
+                <h2 class="title-underblock custom text-uppercase text-center mb20" ng-cloak><span>{{ key }}</span></h2>
+                <div class="row">
+                    <div class="col-md-3">
+                        <select class="form-control inpu-sm" ng-change="stats.update_time(key, stats.theperiod)"
+                                ng-options="time.value as time.name for time in type.years" ng-model="stats.theperiod">
+                        </select>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table table-bordered table-hover table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>Country</th>
+                            <th>Event</th>
+                            <th>Points</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in type.results">
+                            <td>{{$index + ((stats.pagers[key] -1) * 10) + 1}}</td>
+                            <td ng-if="item.title"><a href="{{ item.get_absolute_url }}">{{ item.title}}</a></td>
+                            <td class="f16">
+                                <span class="flag {{item.country | lowercase}}"/>
+                            </td>
+                            <td>{{item.count_battle}}</td>
+                            <td>{{item.sum_points}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <nav>
+                        <ul class="pager">
+                            <li ng-if="stats.tables_person[key].previous != null"><a ng-click="stats.previous_page(key)">Previous</a>
+                            </li>
+                            <li ng-if="stats.tables_person[key].next != null"><a ng-click="stats.next_page(key)">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,85 @@
+<div id="content" role="main" class="no-padding" ng-controller="Search">
+
+    <div class="page-top larger parallax" style="background-image: url('/site_media/static/img/redbull.jpg')" data-0="background-position:50% 0px;" data-1000="background-position:50% -100%">
+        <div class="container text-center">
+            <h1 class=" text-white text-center title-underblock white">Search something?</h1>
+            <p class="lead text-white">Type somethng like bboy name, crew name or event name then we can show you some results.</p>
+            <div class="row">
+                <div class="col-md-6 col-md-push-3">
+                    <form action="#">
+                        <div class="input-group input-group-lg no-radius">
+                            <input type="text" class="form-control" ng-change="search.search()" ng-model="search.q" id="search" placeholder="Search" required>
+                            <span class="input-group-btn">
+                            <button class="btn btn-custom no-radius" type="submit"><i class="fa fa-search"></i><span class="hidden-xss">&nbsp;&nbsp;&nbsp;Search!</span></button>
+                            </span>
+                        </div><!-- input-group -->
+                    </form>
+                </div><!-- End .col-md-6 -->
+            </div><!-- End .row -->
+        </div><!-- End .container -->
+    </div><!-- End .knowledge-header -->
+
+
+    <div class="container">
+
+
+        <footer ng-if="search.artists" class="entry-footer clearfix">
+            <span class="entry-cats">
+                <span class="entry-label">Artists: </span>
+                <span class="entry-separator">/</span>
+            </span><!-- End .entry-tags -->
+            <span class="entry-cats" ng-repeat="artist in search.artists">
+                <span class="entry-label"><a ng-href="{{artist.get_absolute_url}}">{{artist.title}}</a>
+                    <span class="entry-separator">/</span>
+                </span><!-- End .entry-tags -->
+            </span>
+        </footer>
+
+        <div class="mb10"></div><!-- space -->
+
+        <footer ng-if="search.crews" class="entry-footer clearfix">
+            <span class="entry-cats">
+                <span class="entry-label">Crews: </span>
+                <span class="entry-separator">/</span>
+            </span><!-- End .entry-tags -->
+            <span class="entry-cats" ng-repeat="crew in search.crews">
+                <span class="entry-label"><a ng-href="{{crew.get_absolute_url}}">{{crew.title}}</a>
+                    <span class="entry-separator">/</span>
+                </span><!-- End .entry-tags -->
+            </span>
+        </footer>
+
+        <div class="mb10"></div><!-- space -->
+
+        <footer ng-if="search.events" class="entry-footer clearfix">
+            <span class="entry-cats">
+                <span class="entry-label">Events: </span>
+                <span class="entry-separator">/</span>
+            </span><!-- End .entry-tags -->
+            <span class="entry-cats" ng-repeat="event in search.events">
+                <span class="entry-label"><a ng-href="{{event.get_absolute_url}}">{{event.title}}</a>
+                    <span class="entry-separator">/</span>
+                </span><!-- End .entry-tags -->
+            </span>
+        </footer>
+
+        <div class="mb10"></div><!-- space -->
+      
+        <div ng-if="search.items">
+            <h2 ng-cloak>Videos:</h2>
+        <div class="mb5"></div><!-- space -->
+
+          
+        <div id="portfolio-item-container" class="max-col-5 popup-gallery no-margin" data-layoutmode="fitRows" isotope-container ng-cloak="">
+            <div class="portfolio-item portfolio-image-zoom portfolio-meta-slideup" ng-repeat="poi in search.items track by poi.id" style="margin-bottom:1px;" isotope-item>
+                <figure>
+                    <a ng-href="{{ poi.get_absolute_url }}" class="zoom-item" title="{{ poi.title }}"><img style="width: 480px; height: 181px;" ng-src="{{ poi.thumbnail }}" alt="portfolio item name" class="img-responsive"></a>
+                </figure>
+                <div class="portfolio-meta">
+                    <h2 class="portfolio-title"><a ng-href="{{ poi.get_absolute_url }}">{{ poi.title }}</a></h2>
+                </div><!-- End .portfolio-meta -->                            
+            </div><!-- End .portfolio-item -->
+        </div>
+        </div>
+
+  </div>

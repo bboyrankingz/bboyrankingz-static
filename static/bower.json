@@ -1,0 +1,43 @@
+{
+  "name": "bboyrankingz",
+  "version": "0.0.0",
+  "authors": [
+    "bboy.stats <bboy.stats@gmail.com>"
+  ],
+  "description": "bboyrankingz bower conf",
+  "license": "MIT",
+  "homepage": "bboyrankingz.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "~4.2.0",
+    "bootstrap": "~3.3.1",
+    "jquery.actual": "~1.0.16",
+    "jquery.mb.ytplayer": "~2.7.5",
+    "jquery.tagsinput": "^1.3.6",
+    "jqueryui": "~1.11.2",
+    "pines-notify": "~2.0.1",
+    "typeahead.js": "~0.10.5",
+    "TimelineJS": "https://github.com/NUKnightLab/TimelineJS.git#~2.35.2",
+    "animate.css": "~3.2.0",
+    "bootstrap-datetimepicker": "~0.0.11",
+    "angular": "~1.3.15",
+    "ngInfiniteScroll": "1.0.0",
+    "angular-truncate": "*",
+    "angular-moment": "~0.10.1",
+    "angucomplete-alt": "~1.2.2",
+    "js-cookie": "~2.1.0",
+    "angular-facebook": "^0.2.3",
+    "angular-isotope": "^0.1.14",
+    "owl.carousel": "^2.1.6",
+    "angular-youtube-mb": "^1.3.1",
+    "leaflet": "^1.0.3",
+    "angular-filter": "^0.5.16",
+    "react": "^15.5.4"
+  }
+}

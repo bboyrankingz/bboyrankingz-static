@@ -1,0 +1,62 @@
+<div id="content" role="main" class="no-padding" ng-controller="Stream">
+
+    <div class="page-top larger parallax" style="background-image: url('/site_media/static/img/redbull.jpg')" data-0="background-position:50% 0px;" data-1000="background-position:50% -100%">
+        <div class="container text-center">
+            <h1 class=" text-white text-center title-underblock white">Last post updated</h1>
+            <p class="lead text-white">Here the list of the last updating blog and post..</p>
+            <div class="row">
+                <div class="col-md-6 col-md-push-3">
+                    <form action="#">
+                        <div class="input-group input-group-lg no-radius">
+                            <select class="form-control inpu-sm" ng-model="stream.sort" ng-change="stream.update()">
+                                <option value="modified"> Last updated</option>
+                                <option value="created"> Last Created</option>
+                            </select>
+                        </div><!-- input-group -->
+                    </form>
+                </div><!-- End .col-md-6 -->
+                <div class="col-md-6">
+                    <form action="#">
+                        <div class="input-group input-group-lg no-radius">
+                            <select class="form-control inpu-sm" ng-model="stream.type" ng-change="stream.update()">
+                                <option value=""> All type</option>
+                                <option value="1"> Footages</option>
+                                <option value="2"> Events</option>
+                                <option value="4"> Person</option>
+                                <option value="5"> Crews</option>
+                            </select>
+                        </div><!-- input-group -->
+                    </form>
+                </div><!-- End .col-md-6 -->
+            </div><!-- End .row -->
+        </div><!-- End .container -->
+    </div><!-- End .knowledge-header -->
+
+
+    <div class="container">
+        <div infinite-scroll='stream.reddit.nextPage()' infinite-scroll-disabled='stream.reddit.busy' infinite-scroll-distance='1' ng-cloak>
+          <div ng-repeat="group in (stream.reddit.items | groupBy: 'modified | amTimeAgo' | toArray:true | orderBy:'modified')">
+            <div class="row">
+              <div class="col-md-12"><h3><b><i class="fa fa-calendar"></i> {{group.$key | date:'MMMM d, yyyy' }}</b></h3></div>
+            </div>
+            <div class="col-md-12" ng-repeat="poi in group">
+              <div class="media">
+                <a class="pull-left" ng-href="{{poi.get_absolute_url}}">
+                  <img class="img-circle" style="width: 64px; height: 64px;" ng-src="{{poi.thumbnail}}">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">
+                    <a ng-href="{{poi.get_absolute_url}}">{{poi.title}}</a>
+                  </h4>
+                  <small>by <a ng-href="{{ poi.user_get_absolute_url }}">{{ poi.submitted_by }}</small>
+                </div>
+              </div>
+              <hr/>
+              <div style='clear: both;'></div>
+            </div>
+          </div>
+          <div ng-show='reddit.busy'>Loading data...</div>
+        </div>
+    </div>
+
+</div>

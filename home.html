@@ -1,0 +1,195 @@
+
+
+    <div id="content" role="main" class="no-padding" ng-controller="Home">
+
+
+        <div id="revslider-container">
+    
+
+        <div id="revslider" rev-slider>
+            <ul>
+                <li data-transition="fade" data-slotamount="8" data-masterspeed="800" ng-repeat="poi in home.slider.results" rev-slider-item>
+
+                  <img ng-src="{{ poi.cover }}"  alt="{{ poi.title}}" data-lazyload="{{ poi.cover}}" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+
+                  <div class="tp-caption rev-subtitle lfb ltt"
+                      data-x="center"
+                      data-y="155"
+                      data-speed="1000"
+                      data-start="900"
+                      data-easing="Power3.easeInOut"
+                      data-endspeed="400"
+                      style="z-index: 10">Welcome to bboyrankingz
+                  </div>
+
+                  <div class="tp-caption rev-title lfb ltt"
+                        data-x="center"
+                        data-y="210"
+                        data-speed="1000"
+                        data-start="1000"
+                        data-easing="Power3.easeInOut"
+                        data-endspeed="600"
+                        style="z-index: 6">{{ poi.title}}
+                  </div>
+
+                  <div class="tp-caption rev-text lfb ltt"
+                      data-x="center"
+                      data-y="290"
+                      data-speed ="1000"
+                      data-start="1200"
+                      data-easing="Power3.easeInOut"
+                      data-endspeed="700"
+                      style="z-index: 12">The leadin b-boy ranking hub.
+                  </div>
+
+                   <div class="tp-caption rev-btn lfb ltt"
+                        data-x="center"
+                        data-y="360"
+                        data-speed="1000"
+                        data-start="1400"
+                        data-easing="Power3.easeInOut"
+                        data-endspeed="800"
+                        style="z-index: 14">
+                            <a href="{{ poi.get_absolute_url }}" class="btn btn-white btn-border radius-lger min-width"><strong>Show !</strong></a>
+                    </div>
+
+                  </li>
+              </ul>
+          </div>
+
+          <a href="#id-to-scroll" class="scroll-btn light" data-offset="-55" data-0="opacity:1" data-top-bottom="opacity:0;" title="Go Down"><span></span></a>
+
+
+  </div><!--/#main-slider-->
+
+
+  <div class="container-fluid no-padding" id="id-to-scroll">
+
+        <div class="row no-margin">
+            <div ng-repeat="(key,type) in home.tables" ng-class="$index % 2 == 0 ? 'col-sm-4 bg-custom' : 'col-sm-4 bg-custom2'">
+                <div class="colored-box">
+                    <h2 class="text-white mb20">Top 5 {{key}}</h2>
+              
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Name</th>
+                                    <th>Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in type">
+                                    <td><span class="highlight reverse">{{$index + 1}}</span></td>
+                                    <td ng-if="item.title">
+                                        <a href="{{ item.get_absolute_url }}"><span class="highlight reverse">{{ item.title}}</span></a>
+                                    </td>
+                                    <td ng-if="!item.title"><span class="highlight reverse">{{ item.country }}</span></td>
+                                    <td><span class="highlight reverse">{{item.sum_points}}{{item.score}}</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <a href="/#/stats" class="btn btn-white v2 btn-border no-radius">More stats</a>
+                
+                </div>
+            </div>
+        </div>
+
+  </div><!-- End .container-fluid -->
+
+  <div class="bg-lightergray pt70">
+
+    <div class="container">
+        <header class="title-block text-center mb60">
+            <h2 class="title-underblock custom text-uppercase text-center mb20"><span>Recent Footage</span></h2>
+            <p>Post youtube footage</p>
+        </header>
+
+         <div class="mb5"></div><!-- space -->
+          
+        <div id="portfolio-item-container" class="max-col-4 no-margin popup-gallery" data-layoutmode="fitRows" isotope-container ng-cloak="">
+            <div class="portfolio-item portfolio-meta-slideup" ng-repeat="poi in home.items track by poi.id" isotope-item>
+                <figure>
+                    <a ng-href="{{ poi.get_absolute_url }}" class="zoom-item" title="{{ poi.title }}"><img style="width: 480px; height: 181px;" ng-src="{{ poi.thumbnail }}" alt="{{ poi.title }}" class="img-responsive"></a>
+                </figure>
+                <div class="portfolio-meta dark">
+                    <h2 class="portfolio-title"><a ng-href="{{ poi.get_absolute_url }}">{{ poi.title }}</a></h2>
+                    <div class="portfolio-tags"></div>
+                </div><!-- End .portfolio-meta -->                            
+            </div><!-- End .portfolio-item -->
+        </div>
+        <div class="mb5"></div><!-- space -->
+
+    </div><!-- End .container -->
+
+  </div>
+
+       <div class="mb5"></div><!-- space -->
+
+  <div class="callout custom no-border">
+      <div class="mb5"></div><!-- space -->
+        <div class="container">
+            <div class="callout-wrapper">
+                <div class="callout-left">
+                    <h2 class="callout-title">Don't forget to post your youtube videos. Try now!</h2>
+                    <p class="callout-desc">Find easily every footages from your favorite crew, b-boy or event by a powerfull system of tagging.</p>
+                </div><!-- End .callout-left -->
+                <div class="callout-right">
+                    <a href="/footage/" class="btn btn-white v2 btn-border radius-lger min-width">More footage!</a>
+                </div><!-- End .callout-right -->
+            </div><!-- End .callout-wrapper -->
+        </div><!-- End .container -->
+        <div class="mb10"></div><!-- space -->
+    </div>
+
+
+  <div class="bg-lightgray pt65 pb15">
+      <div class="container ">
+          <header class="title-block text-center mb60">
+            <h2 class="title-underblock custom text-uppercase text-center mb20"><span>Upcoming events</span></h2>
+            <p>The biggest list of b-boy jam</p>
+          </header>
+                  
+            <data-owl-carousel class="portfolio-rated-carousel owl-carousel nav-border center-nav center-nav-animate popup-gallery">
+                <div owl-carousel-item="" ng-repeat="poi in home.jamtime.results track by poi.id"
+                     class="portfolio-item portfolio-image-zoom portfolio-meta-slideup">
+                     <figure>
+                        <a ng-href="{{ poi.get_absolute_url }}" class="zoom-item" title="Portfolio Item Description"><img style="width: 480px; height: 181px;" ng-src="{{ poi.thumbnail}}" alt="{{ poi.title}}" class="img-responsive"></a>
+                    </figure>
+                    <div class="portfolio-meta dark">
+                        <h3 class="portfolio-title"><a ng-href="{{ poi.get_absolute_url }}">{{ poi.title }}</a></h3>
+                        <div class="portfolio-tags">{{ poi.spot.properties.address }}</div>
+                        <a class="portfolio-favourite" href="#" title="Favourite">
+                            <span class="lead">{{ poi.start | date:'d' }}</span>
+                            <span class="small" style="margin-top:-20px">{{ poi.start | date:'MMM' }}</span>
+                        </a>
+                    </div><!-- End .portfolio-meta -->  
+                </div>
+            </data-owl-carousel>
+          
+      </div><!-- End .container -->
+  </div><!-- End .bg-lightergray -->
+
+    <div class="bg-image callout callout-vertical larger no-border no-margin fullwidth" data-bgattach="/site_media/static/img/redbull.jpg" style="background-image: url(&quot;/site_media/static/img/redbull.jpg&quot;);">
+        
+        <div class="mb10"></div><!-- space -->
+        
+        <h2 class="callout-title text-white">You can also post your events? Try Now!</h2>
+        
+        <p class="callout-desc text-white">No big formular just copy your facebook events link and it's done.</p>
+        
+        <div class="mb10"></div><!-- space -->
+      
+        <div class="callout-action">
+            <a href="/events/" class="btn btn-white btn-border radius-lger min-width">Check it out!</a>
+        </div><!-- End .callout-action -->
+        
+        <div class="mb10"></div><!-- space -->
+    
+    </div>
+
+</div>
